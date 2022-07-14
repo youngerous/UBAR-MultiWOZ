@@ -27,9 +27,7 @@ def analysis():
         req_slots[domain] = []
         info_slots[domain] = []
     
-    arc_pth_21 = r'data/MultiWOZ_2.1/data.json.zip'
-    print(os.getcwd())
-    archive = zipfile.ZipFile(arc_pth_21, 'r')
+    archive = zipfile.ZipFile(data_path+data_file+'.zip', 'r')
     data = archive.open(data_file, 'r').read().decode('utf-8').lower()
     ref_nos = list(set(re.findall(r'\"reference\"\: \"(\w+)\"', data)))
     data = json.loads(data)
