@@ -52,7 +52,7 @@ def clean_text(text):
     text = re.sub(r'([a-zT]+)\.([a-z])', r'\1 . \2', text)   # 'abc.xyz' -> 'abc . xyz'
     text = re.sub(r'(\w+)\.\.? ', r'\1 . ', text)   # if 'abc. ' -> 'abc . '
 
-    with open('data/multi-woz/mapping.pair', 'r') as fin:
+    with open('data/MultiWOZ_2.1/mapping.pair', 'r') as fin:
         for line in fin.readlines():
             fromx, tox = line.replace('\n', '').split('\t')
             text = ' ' + text + ' '
