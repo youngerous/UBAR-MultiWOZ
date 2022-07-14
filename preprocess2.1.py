@@ -497,7 +497,7 @@ if __name__=='__main__':
             'train': 'db/train_db.json',
         }
     # get_db_values('db/value_set.json') # 
-    # preprocess_db(db_paths)
+    preprocess_db(db_paths)
     if not os.path.exists('data/multi-woz-2.1-processed'):
         os.mkdir('data/multi-woz-2.1-processed')
     dh = DataPreprocessor()
