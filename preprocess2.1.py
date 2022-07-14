@@ -141,7 +141,7 @@ class DataPreprocessor(object):
                 slot = ontology.da_abbr_to_slot_name[slot]
             for idx in range(s[3], s[4]+1):
                 try:
-                    u[idx] = ''
+                    u[idx-1] = ''
                 except:
                     import IPython; IPython.embed(); exit(1)
             try:
