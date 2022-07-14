@@ -3,7 +3,7 @@ import spacy
 import ontology, utils
 from collections import OrderedDict
 from tqdm import tqdm
-from config import global_config as cfg
+from config21 import global_config as cfg
 from db_ops import MultiWozDB
 from clean_dataset import clean_slot_values, clean_text, my_clean_text
 
