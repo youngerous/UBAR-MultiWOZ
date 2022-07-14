@@ -146,7 +146,7 @@ class DataPreprocessor(object):
                 len_lex = len(s[2].split())
                 replace_idx = None
                 for idx, token in enumerate(u):
-                    if token == lex_first:
+                    if token.startswith(lex_first):
                         replace_idx = idx
                         break
 
