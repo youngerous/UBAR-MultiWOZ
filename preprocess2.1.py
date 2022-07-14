@@ -155,17 +155,17 @@ class DataPreprocessor(object):
                     if jdx == 0:
                         u[replace_idx] = '[value_'+slot+']'
             except:
-                import IPython; IPython.embed(); exit(1)
-                
-#             for idx in range(s[3], s[4]+1):
-#                 try:
-#                     u[idx] = ''
-#                 except:
-#                     import IPython; IPython.embed(); exit(1)
-#             try:
-#                 u[s[3]] = '[value_'+slot+']'
-#             except:
-#                 u[5] = '[value_'+slot+']'
+                print(f'Exception: {s[2]} not in {" ".join(u)}')
+                for idx in range(s[3], s[4]+1):
+                    try:
+                        u[idx] = ''
+                    except:
+                        print('DEBUG')
+                        import IPython; IPython.embed(); exit(1)
+                try:
+                    u[s[3]] = '[value_'+slot+']'
+                except:
+                    u[5] = '[value_'+slot+']'
                 
         u_delex = ' '.join([t for t in u if t is not ''])
         u_delex = u_delex.replace('[value_address] , [value_address] , [value_address]', '[value_address]')
