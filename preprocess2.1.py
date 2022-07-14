@@ -134,7 +134,7 @@ class DataPreprocessor(object):
         ##
         span = dial_turn['span_info']
         for s in span:
-            slot = s[1]
+            slot = s[1].lower()
             if slot == 'open':
                 continue
             if ontology.da_abbr_to_slot_name.get(slot):
