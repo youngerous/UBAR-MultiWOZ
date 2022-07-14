@@ -155,7 +155,7 @@ class DataPreprocessor(object):
                     if jdx == 0:
                         u[replace_idx] = '[value_'+slot+']'
             except:
-#                 print(f'Exception: {s[2]} not in {" ".join(u)}')
+                print(f'Exception: {s[2]} not in {" ".join(u)}')
                 for idx in range(s[3], s[4]+1):
                     try:
                         u[idx] = ''
