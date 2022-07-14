@@ -130,7 +130,7 @@ class DataPreprocessor(object):
     def delex_by_annotation(self, dial_turn):
         ## add by yyy in 13:48 0803
 #         u = dial_turn['text'].split()
-        u = my_clean_text(dial_turn['text']).split()
+        u = clean_text(dial_turn['text']).split()
         ##
         span = dial_turn['span_info']
         for s in span:
