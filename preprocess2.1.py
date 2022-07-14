@@ -149,7 +149,19 @@ class DataPreprocessor(object):
                     if token.startswith(lex_first):
                         replace_idx = idx
                         break
-                u[replace_idx] = '[value_'+slot+']'
+                try:
+                    u[replace_idx] = '[value_'+slot+']'
+                except:
+                    for idx in range(s[3], s[4]+1):
+                        try:
+                            u[idx] = ''
+                        except:
+                            print('DEBUG')
+                            import IPython; IPython.embed(); exit(1)
+                    try:
+                        u[s[3]] = '[value_'+slot+']'
+                    except:
+                        u[5] = '[value_'+slot+']'
                         
 #                 for jdx in range(len_lex):
 #                     u[replace_idx + jdx] = ''
