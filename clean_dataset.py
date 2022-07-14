@@ -28,7 +28,7 @@ def clean_text(text):
                         '0-122-336-5664': '01223365664',
                         'postcodecb21rs': 'postcode cb21rs',
                         r'i\.d': 'id',
-                        ' i d ': 'id',
+                        ' i d ': ' id ',
                         'Telephone:01223358966': 'Telephone: 01223358966',
                         'depature': 'departure',
                         'depearting': 'departing',
