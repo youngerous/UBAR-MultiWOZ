@@ -134,26 +134,44 @@ class DataPreprocessor(object):
         ##
         span = dial_turn['span_info']
         for s in span:
-            slot = s[1].lower()
+            slot = s[1]
             if slot == 'open':
                 continue
             if ontology.da_abbr_to_slot_name.get(slot):
                 slot = ontology.da_abbr_to_slot_name[slot]
-            for idx in range(s[3], s[4]+1):
-                try:
-                    u[idx] = ''
-                except:
-                    import IPython; IPython.embed(); exit(1)
+                
+            # update for mwoz 2.1 (22.07.14 by Takyoung Kim)
             try:
-                u[s[3]] = '[value_'+slot+']'
+                lex_first = s[2].split()[0]
+                len_lex = len(s[2].split())
+                replace_idx = None
+                for idx, token in enumerate(u):
+                    if token == lex_first:
+                        replace_idx = idx
+                        break
+
+                for jdx in range(len_lex):
+                    u[replace_idx + jdx] = ''
+                    if jdx == 0:
+                        u[replace_idx] = '[value_'+slot+']'
             except:
-                u[5] = '[value_'+slot+']'
+                import IPython; IPython.embed(); exit(1)
+                
+#             for idx in range(s[3], s[4]+1):
+#                 try:
+#                     u[idx] = ''
+#                 except:
+#                     import IPython; IPython.embed(); exit(1)
+#             try:
+#                 u[s[3]] = '[value_'+slot+']'
+#             except:
+#                 u[5] = '[value_'+slot+']'
+                
         u_delex = ' '.join([t for t in u if t is not ''])
         u_delex = u_delex.replace('[value_address] , [value_address] , [value_address]', '[value_address]')
         u_delex = u_delex.replace('[value_address] , [value_address]', '[value_address]')
         u_delex = u_delex.replace('[value_name] [value_name]', '[value_name]')
         u_delex = u_delex.replace('[value_name]([value_phone] )', '[value_name] ( [value_phone] )')
-        u_delex = clean_text(u_delex)
         return u_delex
 
 
