@@ -140,7 +140,10 @@ class DataPreprocessor(object):
             if ontology.da_abbr_to_slot_name.get(slot):
                 slot = ontology.da_abbr_to_slot_name[slot]
             for idx in range(s[3], s[4]+1):
-                u[idx] = ''
+                try:
+                    u[idx] = ''
+                except:
+                    import IPython; IPython.embed(); exit(1)
             try:
                 u[s[3]] = '[value_'+slot+']'
             except:
