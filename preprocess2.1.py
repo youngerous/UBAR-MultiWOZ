@@ -140,22 +140,23 @@ class DataPreprocessor(object):
             if ontology.da_abbr_to_slot_name.get(slot):
                 slot = ontology.da_abbr_to_slot_name[slot]
                 
-            # update for mwoz 2.1 (22.07.14 by Takyoung Kim)
-            try:
+            # update for mwoz 2.1 (22.07.14 by Takyoung Kim)            
+            len_lex = len(s[2].split())
+            if len_lex == 1:
                 lex_first = s[2].split()[0]
-                len_lex = len(s[2].split())
                 replace_idx = None
                 for idx, token in enumerate(u):
                     if token.startswith(lex_first):
                         replace_idx = idx
                         break
-
-                for jdx in range(len_lex):
-                    u[replace_idx + jdx] = ''
-                    if jdx == 0:
-                        u[replace_idx] = '[value_'+slot+']'
-            except:
-                print(f'Exception: {s[2]} not in {" ".join(u)}')
+                u[replace_idx] = '[value_'+slot+']'
+                        
+#                 for jdx in range(len_lex):
+#                     u[replace_idx + jdx] = ''
+#                     if jdx == 0:
+#                         u[replace_idx] = '[value_'+slot+']'
+            else:
+#                 print(f'Exception: {s[2]} not in {" ".join(u)}')
                 for idx in range(s[3], s[4]+1):
                     try:
                         u[idx] = ''
