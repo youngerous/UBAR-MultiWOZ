@@ -129,8 +129,8 @@ class DataPreprocessor(object):
 
     def delex_by_annotation(self, dial_turn):
         ## add by yyy in 13:48 0803
-#         u = dial_turn['text'].split()
-        u = clean_text(dial_turn['text']).split()
+        u = dial_turn['text'].split()
+#         u = clean_text(dial_turn['text']).split()
         ##
         span = dial_turn['span_info']
         for s in span:
@@ -141,7 +141,7 @@ class DataPreprocessor(object):
                 slot = ontology.da_abbr_to_slot_name[slot]
             for idx in range(s[3], s[4]+1):
                 try:
-                    u[idx-1] = ''
+                    u[idx] = ''
                 except:
                     import IPython; IPython.embed(); exit(1)
             try:
@@ -153,6 +153,7 @@ class DataPreprocessor(object):
         u_delex = u_delex.replace('[value_address] , [value_address]', '[value_address]')
         u_delex = u_delex.replace('[value_name] [value_name]', '[value_name]')
         u_delex = u_delex.replace('[value_name]([value_phone] )', '[value_name] ( [value_phone] )')
+        u_delex = clean_text(u_delex)
         return u_delex
 
 
