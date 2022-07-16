@@ -312,6 +312,7 @@ class DataPreprocessor(object):
                             print(fn)
                         s_delex = self.delex_by_valdict(dial_turn['text'])
                     single_turn['resp'] = s_delex
+                    single_turn['nodelx_resp'] = ' '.join(clean_text(dial_turn['text']).split())
 
                     # get belief state, semi=informable/book=requestable, put into constraint_dict
                     for domain in dial_domains:
